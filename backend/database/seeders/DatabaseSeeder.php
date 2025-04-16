@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
             ItemSeeder::class,
             // InertiaTestSeeder::class,
         ]);
-        // User::factory(10)->create();
+        \App\Models\Customer::factory(1000)->create();
 
         // User::factory()->create([
         //     'name' => 'Test User',
