@@ -5,6 +5,7 @@ import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
+import ValidationErrors from '@/Components/ValidationErrors.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 
 defineProps({
@@ -32,7 +33,7 @@ const submit = () => {
 <template>
     <GuestLayout>
         <Head title="Log in" />
-
+        <ValidationErrors :errors="$page.props.errors" class="mb-4" />
         <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
             {{ status }}
         </div>
@@ -76,7 +77,14 @@ const submit = () => {
                 </label>
             </div>
 
-            <div class="flex items-center justify-end mt-4">
+            <div class="flex items-center justify-between mt-4">
+                <Link
+                    href="/register"
+                    class="text-sm text-blue-600 hover:underline"
+                >
+                    ユーザー登録はこちら
+                </Link>
+
                 <Link
                     v-if="canResetPassword"
                     :href="route('password.request')"

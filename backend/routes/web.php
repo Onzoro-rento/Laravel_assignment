@@ -1,9 +1,17 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PostsController;
+use App\Http\Controllers\RepliesController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+
+Route::resource('/posts', PostsController::class)
+->middleware(['auth', 'verified']);
+
+Route::resource('/posts/{post}/replies', RepliesController::class)
+->middleware(['auth', 'verified']);
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
